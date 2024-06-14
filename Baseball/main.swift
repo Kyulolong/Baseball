@@ -2,10 +2,20 @@
 //  main.swift
 //  Baseball
 //
-//  Created by 김인규 on 6/14/24.
 //
+//class MyAnswer {
+//    let myresult = readLine()
+//    func al() {
+//        print(myresult)
+//    }
+//}
+//MyAnswer().al()
 
-import Foundation
 
-print("Hello, World!")
+let input = readLine()!
+//print(input)
+
+let game = BaseballGame()
+try game.start()
+    
 
