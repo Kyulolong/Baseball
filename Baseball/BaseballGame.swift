@@ -6,131 +6,71 @@
 
 
 // level 1
-class BaseballGame {
-
-    func start() {
-        let answer = makeAnswer()
-        print("게임이 시작되었습니다. 정답은 \(answer) 입니다")
-    }
-    func makeAnswer() -> [Int] {
-       return [Int.random(in: 1...9), Int.random(in: 1...9), Int.random(in: 1...9)]
-    }
-}
-
-// level 2
-
 //class BaseballGame {
-//    var digit1: Int
-//    var digit2: Int
-//    var digit3: Int
 //
-//    init() {
-//        digit1 = Int.random(in: 1...9)
-//        digit2 = Int.random(in: 1...9)
-//        digit3 = Int.random(in: 1...9)
-//    }
-//    func start() -> Void {
+//    func start() {
 //        let answer = makeAnswer()
 //        print("게임이 시작되었습니다. 정답은 \(answer) 입니다")
-//        var attempts = 0
-//
-//        while true {
-//            guard let input = readLine(),
-//                let intUserAnswer = Int(input) else {
-//                print("정수를 입력해 주세요")
-//                continue
-//            }
-//
-//            if intUserAnswer > 999 || intUserAnswer < 100 {
-//                print("3자리 정수를 입력하세요")
-//                continue
-//            }
-////            if intUserAnswer > 100  {
-////                print("")
-////                continue
-////            }
-//            // 같은 수가 2번 반복, 0이 들어가는 상황 추후구현 필요
-//
-//            let (strike, ball) = checkAnswer(intUserAnswer)
-//
-//            if strike == 3 {
-//                print("축하합니다! 정답입니다")
-//                break
-//            } else if strike == 0 && ball == 0 {
-//                print("Nothing")
-//            } else {
-//                print ("\(strike)스트라이크, \(ball)볼")
-//
-//            }
-//            attempts += 1
-//            print("시도 횟수 : \(attempts)")
-//        }
 //    }
-//
 //    func makeAnswer() -> Int {
-//        let finalAnswer = digit1 * 100 + digit2 * 10 + digit3
-//        return finalAnswer
-//    }
-//
-//    func checkAnswer(_ userAnswer: Int) -> (Int, Int) {
-//        let inputDigits = [userAnswer / 100, (userAnswer / 10) % 10, userAnswer % 10]
-//        let answerDigits = [digit1, digit2, digit3]
-//
-//        var strike = 0
-//        var ball = 0
-//
-//        for i in 0...2{
-//            if inputDigits[i] == answerDigits[i] {
-//                strike += 1
-//            } else if answerDigits.contains(inputDigits[i]){
-//                ball += 1
-//            }
+//        var array: Set<Int> = []
+//        while array.count < 3{
+//            array.insert(Int.random(in: 1...9))
 //        }
-//        return (strike, ball)
+//
+//        let finalAnswerString = array.map { String($0) }.joined()
+//        let finalAnswer = Int(finalAnswerString) ?? 0
+//
+//        return finalAnswer
 //    }
 //}
 
+
+// level 2
+//
 //class BaseballGame {
-//    var strike = 0
-//    var ball = 0
+//
 //    func start() {
 //        let answer = makeAnswer()
 //        print("게임이 시작되었습니다. 정답은 \(answer) 입니다")
 //        var attempts = 0
-//        
+//
 //        while true {
+//            var strike = 0
+//            var ball = 0
+////            정수가 아닌 경우
 //            guard let input = readLine(),
 //                  let intUserAnswer = Int(input) else {
 //                print("정수를 입력해 주세요")
 //                continue
 //            }
+////            3자리 정수가 아닌 경우
 //            if intUserAnswer > 999 || intUserAnswer < 100 {
 //                print("3자리 정수를 입력하세요")
 //                continue
 //            }
 //            let inputDigits = [intUserAnswer / 100, (intUserAnswer / 10) % 10, intUserAnswer % 10]
-//            let answerDigits = [digit1, digit2, digit3]
-//            
+//
+////            0이 들어가는 상황
 //            if inputDigits.contains(0)  {
 //                print("올바르지 않은 입력값입니다")
 //                continue
 //            }
-//            //            for i in 0...2{
-//            //                if inputDigits[i] == inputDigits[i+1]{
-//            //                    print("중복되는 숫자입니다")
-//            //                    continue
-//            //                }
-//            //            }
-//            // 같은 수가 2번 반복, 0이 들어가는 상황 추후구현 필요
-//            
+//            let uniqueDigit = Set(inputDigits)
+////             같은 수가 2번 반복
+//            if uniqueDigit.count != 3 {
+//                print("중복되는 숫자입니다")
+//                continue
+//            }
+//
 //            for i in 0...2{
-//                if inputDigits[i] == answerDigits[i] {
-//                    self.strike += 1
-//                } else if answerDigits.contains(inputDigits[i]){
-//                    self.ball += 1
+//                if inputDigits[i] == answer[i] {
+//                    strike += 1
+//                } else if answer.contains(inputDigits[i]){
+//                    ball += 1
 //                }
 //            }
-//            
+//
 //            if strike == 3 {
 //                print("축하합니다! 정답입니다")
 //                break
@@ -143,19 +83,293 @@ class BaseballGame {
 //            print("시도 횟수 : \(attempts)")
 //        }
 //    }
-//    var digit1: Int
-//    var digit2: Int
-//    var digit3: Int
-//    
-//    init() {
-//        digit1 = Int.random(in: 1...9)
-//        digit2 = Int.random(in: 1...9)
-//        digit3 = Int.random(in: 1...9)
-//    }
-//    
-//    func makeAnswer() -> Int {
-//        let finalAnswer = digit1 * 100 + digit2 * 10 + digit3
+//
+//    func makeAnswer() -> [Int] {
+//        var array: Set<Int> = []
+//        while array.count < 3{
+//            array.insert(Int.random(in: 1...9))
+//        }
+//        let finalAnswer = Array(array)
 //        return finalAnswer
 //    }
 //}
+
+//level 3
+//class BaseballGame {
+//    func start() {
+//        let answer = makeAnswer()
+//        print("게임이 시작되었습니다. 정답은 \(answer) 입니다")
+//        var attempts = 0
 //
+//        while true {
+//            var strike = 0
+//            var ball = 0
+////            정수가 아닌 경우
+//            guard let input = readLine(),
+//                  let intUserAnswer = Int(input) else {
+//                print("정수를 입력해 주세요")
+//                continue
+//            }
+////            3자리 정수가 아닌 경우
+//            if intUserAnswer > 999 || intUserAnswer < 100 {
+//                print("3자리 정수를 입력하세요")
+//                continue
+//            }
+//            let inputDigits = [intUserAnswer / 100, (intUserAnswer / 10) % 10, intUserAnswer % 10]
+//
+////            0이 들어가는 상황
+//            if inputDigits.contains(0)  {
+//                print("올바르지 않은 입력값입니다")
+//                continue
+//            }
+//            let uniqueDigit = Set(inputDigits)
+////             같은 수가 2번 반복
+//            if uniqueDigit.count != 3 {
+//                print("중복되는 숫자입니다")
+//                continue
+//            }
+//
+//            for i in 0...2{
+//                if inputDigits[i] == answer[i] {
+//                    strike += 1
+//                } else if answer.contains(inputDigits[i]){
+//                    ball += 1
+//                }
+//            }
+//
+//            if strike == 3 {
+//                print("축하합니다! 정답입니다")
+//                break
+//            } else if strike == 0 && ball == 0 {
+//                print("Nothing")
+//            } else {
+//                print ("\(strike)스트라이크, \(ball)볼")
+//            }
+//            attempts += 1
+//            print("시도 횟수 : \(attempts)")
+//        }
+//    }
+//
+//    func makeAnswer() -> [Int] {
+//        var array: Set<Int> = []
+//          // 첫 번째 값은 1~9로 넣기
+//        array.insert(Int.random(in: 1...9))
+//        while array.count < 3{
+//            array.insert(Int.random(in: 0...9))
+//        }
+//        let finalAnswer = Array(array)
+//
+//        return finalAnswer
+//    }
+//}
+
+//level 4, 6
+class BaseballGame {
+    
+    func start() {
+        var answer = makeAnswer()
+        var isPlaying = true
+        
+        while isPlaying {
+            
+            print("""
+              환영합니다! 원하시는 번호를 입력해주세요
+              1. 게임 시작하기  2. 게임 기록 보기  3. 종료하기
+""")
+            guard let input = readLine(), let chooseGame = Int(input) else {
+                print("숫자를 입력하세요")
+                continue
+            }
+            switch chooseGame {
+            case 1:
+                print("게임이 시작되었습니다. 정답은 \(answer) 입니다")
+                playGame()
+            case 2:
+                print("게임 기록 보기 ")
+                
+            case 3:
+                print("게임을 종료합니다.")
+                isPlaying = false
+            default:
+                print("유효한 숫자를 입력해 주세요")
+            }
+        }
+        func playGame(){
+            var attempts = 0
+            while true {
+                var strike = 0
+                var ball = 0
+                //            정수가 아닌 경우
+                guard let input = readLine(),
+                      let intUserAnswer = Int(input) else {
+                    print("정수를 입력해 주세요")
+                    continue
+                }
+                //            3자리 정수가 아닌 경우
+                if intUserAnswer > 999 || intUserAnswer < 100 {
+                    print("3자리 정수를 입력하세요")
+                    continue
+                }
+                let inputDigits = [intUserAnswer / 100, (intUserAnswer / 10) % 10, intUserAnswer % 10]
+                
+                //            0이 들어가는 상황
+                if inputDigits.contains(0)  {
+                    print("올바르지 않은 입력값입니다")
+                    continue
+                }
+                let uniqueDigit = Set(inputDigits)
+                //             같은 수가 2번 반복
+                if uniqueDigit.count != 3 {
+                    print("중복되는 숫자입니다")
+                    continue
+                }
+                for i in 0...2{
+                    if inputDigits[i] == answer[i] {
+                        strike += 1
+                    } else if answer.contains(inputDigits[i]){
+                        ball += 1
+                    }
+                }
+                
+                if strike == 3 {
+                    print("축하합니다! 정답입니다")
+                    answer = makeAnswer()
+                    break
+                } else if strike == 0 && ball == 0 {
+                    print("Nothing")
+                } else {
+                    print ("\(strike)스트라이크, \(ball)볼")
+                }
+                attempts += 1
+                print("시도 횟수 : \(attempts)")
+            }
+        }
+    }
+    
+    func makeAnswer() -> [Int] {
+        var array: Set<Int> = []
+        array.insert(Int.random(in: 1...9))
+        while array.count < 3{
+            array.insert(Int.random(in: 0...9))
+        }
+        let finalAnswer = Array(array)
+        
+        return finalAnswer
+    }
+}
+
+
+
+//level 5
+//class BaseballGame {
+//    init (){
+//        answer = makeAnswer()
+//    }
+//    var answer : [Int] = []
+//    var trialCount = 0
+//    
+//    func start() {
+//        var isPlaying = true
+//        let recordManager = RecordManager()
+//        trialCount += 1
+//        while isPlaying {
+//            print("""
+//환영합니다! 원하시는 번호를 입력해주세요
+//1. 게임 시작하기  2. 게임 기록 보기  3. 종료하기
+//""")
+//            guard let input = readLine(), let chooseGame = Int(input) else {
+//                print("숫자를 입력하세요")
+//                continue
+//            }
+//            switch chooseGame {
+//            case 1:
+//                print("게임이 시작되었습니다. 정답은 \(answer) 입니다")
+//                playGame()
+//                
+//            case 2:
+//                print("게임 기록 보기 ")
+//                RecordManager().showRecords()
+//                start()
+//            case 3:
+//                print("게임을 종료합니다.")
+//                isPlaying = false
+//            default:
+//                print("유효한 숫자를 입력해 주세요")
+//            }
+//        }
+//        func playGame(){
+//            var attempts = 0
+//            while true {
+//                var strike = 0
+//                var ball = 0
+//                //            정수가 아닌 경우
+//                guard let input = readLine(),
+//                      let intUserAnswer = Int(input) else {
+//                    print("정수를 입력해 주세요")
+//                    continue
+//                }
+//                //            3자리 정수가 아닌 경우
+//                if intUserAnswer > 999 || intUserAnswer < 100 {
+//                    print("3자리 정수를 입력하세요")
+//                    continue
+//                }
+//                let inputDigits = [intUserAnswer / 100, (intUserAnswer / 10) % 10, intUserAnswer % 10]
+//                
+//                //            0이 들어가는 상황
+//                if inputDigits.contains(0)  {
+//                    print("올바르지 않은 입력값입니다")
+//                    continue
+//                }
+//                let uniqueDigit = Set(inputDigits)
+//                //             같은 수가 2번 반복
+//                if uniqueDigit.count != 3 {
+//                    print("중복되는 숫자입니다")
+//                    continue
+//                }
+//                
+//                for i in 0...2{
+//                    if inputDigits[i] == answer[i] {
+//                        strike += 1
+//                    } else if answer.contains(inputDigits[i]){
+//                        ball += 1
+//                    }
+//                }
+//                if strike == 3 {
+//                    print("축하합니다! 정답입니다")
+//                    answer = makeAnswer()
+//                    recordManager.add(trialCount: trialCount, attempts: attempts)
+//                    
+//                    break
+//                } else if strike == 0 && ball == 0 {
+//                    print("Nothing")
+//                } else {
+//                    print ("\(strike)스트라이크, \(ball)볼")
+//                }
+//                attempts += 1
+//                print("시도 횟수 : \(attempts)")
+//            }
+//        }
+//    }
+//}
+//func makeAnswer() -> [Int] {
+//    var array: Set<Int> = []
+//    array.insert(Int.random(in: 1...9))
+//    while array.count < 3{
+//        array.insert(Int.random(in: 0...9))
+//    }
+//    let finalAnswer = Array(array)
+//    return finalAnswer
+//}
+//
+//
+//class RecordManager {
+//    var records = [Int:Int]()
+//    func add(trialCount: Int, attempts: Int) {
+//        records[trialCount] = attempts
+//    }
+//    func showRecords() {
+//        for trialCount in records{
+//            print("시도 : \(trialCount.key) 횟수 : \(trialaCount.value)")
+//        }
+//    }
+//}
