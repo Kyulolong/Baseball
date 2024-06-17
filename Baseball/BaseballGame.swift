@@ -164,17 +164,18 @@
 //}
 
 //level 4, 6
+
 class BaseballGame {
     
     func start() {
         var answer = makeAnswer()
         var isPlaying = true
-        
+        var trialCount = 0
         while isPlaying {
             
             print("""
-              환영합니다! 원하시는 번호를 입력해주세요
-              1. 게임 시작하기  2. 게임 기록 보기  3. 종료하기
+환영합니다! 원하시는 번호를 입력해주세요
+1. 게임 시작하기  2. 게임 기록 보기  3. 종료하기
 """)
             guard let input = readLine(), let chooseGame = Int(input) else {
                 print("숫자를 입력하세요")
@@ -186,7 +187,6 @@ class BaseballGame {
                 playGame()
             case 2:
                 print("게임 기록 보기 ")
-                
             case 3:
                 print("게임을 종료합니다.")
                 isPlaying = false
@@ -194,7 +194,7 @@ class BaseballGame {
                 print("유효한 숫자를 입력해 주세요")
             }
         }
-        func playGame(){
+        func playGame() {
             var attempts = 0
             while true {
                 var strike = 0
@@ -243,9 +243,9 @@ class BaseballGame {
                 attempts += 1
                 print("시도 횟수 : \(attempts)")
             }
+           
         }
     }
-    
     func makeAnswer() -> [Int] {
         var array: Set<Int> = []
         array.insert(Int.random(in: 1...9))
